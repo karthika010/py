@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> stundentsform</h1>
+    <div class="container">
+        <h2>Add Student</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="number" name="rollnumber" placeholder="rollnumber" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h3>Student List</h3>
+        <ul>
+            {% for student in students %}
+            <li>{{ student.name }} - {{ student.rollnumber }} - {{ student.email }}</li>
+            {% empty %}
+            <li>No students yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
