@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2> StudentBiodata</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="studentname" name="studentname" placeholder="studentname" required><br>
+            <input type="number" name="rollno" placeholder="rollno" required><br>
+            <input type="number" name="age" placeholder="age" required><br>
+
+            <label>Select Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label> <br>
+
+            <input type="char" name="address" placeholder="address" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <h3>Student List</h3>
+        <ul>
+            {% for Biodata in biodata %}
+            <li>{{ Biodata.studentname }} - {{ Biodata.rollno }} - {{ Biodata.age }} - {{Biodata.gender }} -
+                {{Biodata.adress}}
+            </li>
+            {% empty %}
+            <li>No students yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

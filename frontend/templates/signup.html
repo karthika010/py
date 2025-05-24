@@ -1,0 +1,103 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Sign Up</title>
+        <style>
+            body {
+                background-color: #ffffff;
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .container {
+                background-color: #e8f5e9;
+                /* light green */
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 15px rgba(0, 128, 0, 0.3);
+                width: 400px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #2e7d32;
+            }
+
+            .message {
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+
+            .message.success {
+                background-color: #c8e6c9;
+                color: #256029;
+            }
+
+            .message.error {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+
+            input,
+            button {
+                margin: 10px 0;
+                padding: 10px;
+                width: 90%;
+                border-radius: 5px;
+                border: 1px solid #2e7d32;
+            }
+
+            button {
+                background-color: #2e7d32;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                border: none;
+            }
+
+            button:hover {
+                background-color: #1b5e20;
+            }
+        </style>
+    </head>
+
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+
+</html>
+----signup.html
