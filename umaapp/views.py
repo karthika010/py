@@ -73,7 +73,7 @@ def student_biodata(request):
         studentname = request.POST.get('studentname')
         rollno = request.POST.get('rollno')
         age = request.POST.get('age')
-        gender = request.POST.get('gender')
+        gender = request.POST.get('gender') 
         address = request.POST.get('address')
         Biodata.objects.create(studentname=studentname,rollno=rollno,age=age,gender=gender,address=address)   
             
