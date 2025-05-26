@@ -26,7 +26,7 @@ def student_form(request):
  
 
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -74,11 +74,45 @@ def student_biodata(request):
         rollno = request.POST.get('rollno')
         age = request.POST.get('age')
         gender = request.POST.get('gender') 
+        
         address = request.POST.get('address')
-        Biodata.objects.create(studentname=studentname,rollno=rollno,age=age,gender=gender,address=address)   
+        phoneno =request.POST.get('phoneno')
+        department =request.POST.get('department')
+        stream =request.POST.get('stream')
+        Biodata.objects.create(studentname=studentname,rollno=rollno,age=age,gender=gender,address=address,phoneno=phoneno,department=department,stream=stream)   
             
         return redirect('student_biodata')      
  
     biodata=Biodata.objects.all()
         
     return render(request,'biodata.html',{'biodata':biodata})
+
+
+
+
+
+
+def edit_biodata(request, pk):
+    biodata = get_object_or_404(Biodata, pk=pk)
+
+    if request.method == "POST":
+        biodata.title = request.POST.get("title")
+        biodata.description = request.POST.get("description")
+        biodata.credits = request.POST.get("credits")
+        biodata.save()
+        return redirect("biodata-ui")
+
+    return render(request, "edit.html", {
+        "edit_biodata": biodata,
+        "biodata": Biodata.objects.all()
+    })
+
+
+
+
+
+
+def delete_biodata(request, pk):
+    biodata = get_object_or_404(Biodata, pk=pk)
+    biodata.delete()
+    return redirect("biodata-ui")

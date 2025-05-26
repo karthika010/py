@@ -15,6 +15,11 @@ class Biodata(models.Model):
     age=models.IntegerField()
     gender=models.CharField(max_length=50)
     address=models.CharField(max_length=100)
+    phoneno=models.CharField(max_length=20)
+    department=models.CharField(max_length=100)
+    stream=models.CharField(max_length=100)
+
 
     def __str__(self):
-     return self.name
+     return self.phoneno
+

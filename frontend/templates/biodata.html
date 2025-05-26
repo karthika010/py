@@ -10,7 +10,7 @@
 <body>
 
     <div class="container">
-        <h2> StudentBiodata</h2>
+        <h2> StudentBiodata</h2>s
         <form method="POST">
             {% csrf_token %}
             <input type="studentname" name="studentname" placeholder="studentname" required><br>
@@ -25,6 +25,14 @@
             <label for="female">Female</label> <br>
 
             <input type="char" name="address" placeholder="address" required><br>
+            <input type="char" name="phoneno" placeholder="phoneno" required><br>
+            <input type="char" name="department" placeholder="department" required><br>
+            <label>Select Stream:</label><br>
+            <input type="radio" id="aided" name="stream" value="aided">
+            <label for="aided">Aided</label>
+
+            <input type="radio" id="unaided" name="stream" value="unaided">
+            <label for="unaided">Unaided</label> <br>
 
             <button type="submit">Submit</button>
         </form>
@@ -33,7 +41,7 @@
         <ul>
             {% for Biodata in biodata %}
             <li>{{ Biodata.studentname }} - {{ Biodata.rollno }} - {{ Biodata.age }} - {{Biodata.gender }} -
-                {{Biodata.adress}}
+                {{Biodata.adress}} -{{Biodata.phoneno}}
             </li>
             {% empty %}
             <li>No students yet.</li>

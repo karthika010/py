@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'projectbk.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'nb',
+         'NAME': 'schemasbk',
          'USER': 'root',          
          'PASSWORD': 'kar28113',  
          'HOST': 'localhost',
