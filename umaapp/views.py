@@ -96,11 +96,19 @@ def edit_biodata(request, pk):
     biodata = get_object_or_404(Biodata, pk=pk)
 
     if request.method == "POST":
-        biodata.title = request.POST.get("title")
-        biodata.description = request.POST.get("description")
-        biodata.credits = request.POST.get("credits")
-        biodata.save()
-        return redirect("biodata-ui")
+        biodata.studentname = request.POST.get("studentname")
+        biodata.rollno = request.POST.get("rollno")
+        biodata.age = request.POST.get("age")
+        biodata.gender = request.POST.get("gender") 
+        
+        biodata.address = request.POST.get("address")
+        biodata.phoneno =request.POST.get("phoneno")
+        biodata.department =request.POST.get("department")
+        biodata.stream =request.POST.get("stream")
+        biodata.save() 
+        return redirect("edit_biodata", pk=biodata.pk)
+        
+
 
     return render(request, "edit.html", {
         "edit_biodata": biodata,
@@ -115,4 +123,4 @@ def edit_biodata(request, pk):
 def delete_biodata(request, pk):
     biodata = get_object_or_404(Biodata, pk=pk)
     biodata.delete()
-    return redirect("biodata-ui")
+    return redirect("edit_biodata")

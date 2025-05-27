@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- templates/biodata/delete.html -->
-<h2>Delete Student: {{ biodata.name }}</h2>
-<form method="POST">
-  {% csrf_token %}
-  <button type="submit">Confirm Delete</button>
-</form>
 
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- templates/biodata/delete.html -->
+  <h1>Delete Biodata: {{ biodata.studentname }}</h1>
+  <h2>Delete Biodata: {{ biodata.rollno }}</h2>
+  <h4>Delete Biodata: {{ biodata.age }}</h4>
+  <h5>Delete Biodata: {{ biodata.gender }}</h5>
+  <h6>Delete Biodata: {{ biodata.address }}</h6>
+  <h7>Delete Biodata: {{ biodata.phoneno }}</h7>
+  <h8>Delete Biodata: {{ biodata.department }}</h8>
+  <h9>Delete Biodata: {{ biodata.stream }}</h9>
+
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+  </form>
+
+
 </body>
+
 </html>
